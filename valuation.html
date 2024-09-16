@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visual Rates</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+    rel="stylesheet">
+  <style>
+  html {
+  font-family: Rubik, Sans-Serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+    body {
+      background-color: hsl(38, 44%, 96%);
+      font-family: rubik, sans-serif;
+      color: #333;
+      font-size: 1.2rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            color: crimson;
+            padding: 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        header a {
+            color: crimson;
+            text-decoration: none;
+        }
+
+        .toggle-btn {
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            margin-right: 30px;
+            color: crimson;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #f8f8f8;
+            overflow-x: hidden;
+            transition: 0.3s;
+            padding-top: 60px;
+            z-index: 2;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 1.25rem;
+            color: #3d3d3d;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #339;
+        }
+
+        .content {
+            margin-top: 70px;
+            padding: 20px;
+            flex: 1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 2rem;
+            margin-left: 50px;
+        
+}
+
+.link {
+    color: #0073e6;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+
+
+    h1 {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 20px;
+      font-size: 2.0rem;
+      color: #333;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      background-color: hsl(0, 0%, 100%);
+      
+      margin-bottom: 20px;
+      
+      border-radius: 10px;
+      
+    }
+
+    li h3 {
+      margin-top: 0;
+      font-size: 1.5rem;
+      color: hsl(210, 26%, 7%);
+    }
+
+    li p {
+      margin: 10px 0;
+      font-size: 1rem;
+    }
+
+    li .price-list {
+      font-weight: 400;
+      color: #333;
+    }
+
+    /* Tab Styles */
+    .tab {
+      overflow: hidden;
+      background-color: #f1f1f1;
+    
+      margin-bottom: 20px;
+      padding: 40px 5px;
+      display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3px;
+  margin-block-end: 30px;
+    }
+
+    .tab button {
+      background-color: inherit;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+      text-transform: uppercase;
+  min-width: 130px;
+  padding-block: 12px;
+
+  font-family: 'rubik';
+  font-weight: var(--fw-500);
+  
+  border: 1px solid var(--border-color, var(--cultured));
+    }
+
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    .tab button.active {
+      background-color: #f00;
+      color: #fff;
+    }
+
+    .tabcontent {
+      display: none;
+      padding: 20px;
+      animation: fadeEffect 0.5s;
+    }
+
+    @keyframes fadeEffect {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+     .img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+      <header>
+    <h1><a href="#">StacySession</a></h1>
+    <button class="toggle-btn" onclick="toggleNav()">☰</button>
+</header>
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+    <a href="#privacy-policy">Home </a>
+    <a href="#terms-of-use">Gallery</a>
+    <a href="#terms-of-use">Rates</a>
+    <a href="#terms-of-use">Book Now</a>
+    
+    <a href="#terms-of-use">Virtual Rates</a>
+    <a href="#terms-of-use">Protocol</a>
+    <a href="#terms-of-use">Blog</a>
+  
+</div>
+
+
+  <div class="container">
+    <h1>Visual Rates</h1>
+
+    <!-- Tab Navigation -->
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'IntroCalls')" id="defaultOpen">Intro Calls</button>
+      <button class="tablinks" onclick="openTab(event, 'Sexting')">Sexting</button>
+      <button class="tablinks" onclick="openTab(event, 'NaughtyCalls')">Naughty Calls & Pics/Clips</button>
+            <button class="tablinks" onclick="openTab(event, 'ServiceRates')" id="defaultOpen">Service Rates</button>
+      <button class="tablinks" onclick="openTab(event, 'VirtualRates')">Virtual Rates</button>
+      <button class="tablinks" onclick="openTab(event, 'LongRates')">Long Rates</button>
+    </div>
+
+    <!-- Intro Calls Tab -->
+    <div id="IntroCalls" class="tabcontent">
+   
+      <ul>
+        
+        <li>
+          
+          <h3>Intro Calls</h3>
+          <p>Booking an introduction call with me is in both of our mutual interest. In your case, we've never met before, but you're undecided if we will connect or what I might be like. An intro call gives you a chance to break the ice, get a feel for my vibe, personality, and any potential chemistry we might have. In my case, I know for a fact that if you're calling me, it's a serious inquiry and you're actually interested. You will set yourself apart from those just calling to manipulate me into a free sexy conversation with no intention of booking with me at all!</p>
+          <p>During these calls, you can expect some friendly flirting but there is no phone sex during our call and no nudity during our video call. This is strictly conversational, and you can ask me as many questions as you like until you feel satisfied!</p>
+          <ul class="price-list">
+            <li>Intro By Phone: $15 for 10min</li>
+            <li>Intro By Video: $20 for 15min</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Sexting Tab -->
+    <div id="Sexting" class="tabcontent">
+                                <img src="./assets/images/naja5.jpg" width="100%" height="100@%" loading="lazy"
+                    alt="Fried Chicken Unlimited" class="img">
+      <ul>
+        <li>
+          <h3>Sexting</h3>
+          <p>Sexting is quite possibly the most discreet way of connecting with me! You could be sitting in a meeting torturing yourself reading my naughty talk, or you could be in a house full of sleeping people and need to be quiet. Whatever the reason, I will have you texting me and smiling on your phone as if we are a couple of horny college students. I will leave you hot and speechless in no time!</p>
+          <ul class="price-list">
+            <li>$20 - 45 Min</li>
+            <li>$35 - 60 Min</li>
+            <li>$50 - 120 Min</li>
+            <li>$220 - All Day, 10AM - 10PM</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Naughty Calls & Pics/Clips Tab -->
+    <div id="NaughtyCalls" class="tabcontent">
+      <ul>
+                                        <img src="./assets/images/naja5.jpg" width="100%" height="100@%" loading="lazy"
+                    alt="Fried Chicken Unlimited" class="img">
+        <li>
+          <h3>Naughty Phone Call</h3>
+          <p>Your fantasy is only a phone call away! When you call me, just close your eyes and imagine. Listen to the sound of my smooth sultry voice in your ear as if I'm truly right there beside you! We can talk about anything. Light conversation about the weather or our favorite books, right down to the naughtiest taboo that would make any vanilla mind explode! Here we can let our imaginations run wild and take us down a road straight to ecstasy!</p>
+          <ul class="price-list">
+            <li>$25 - 30 Min</li>
+            <li>$45 - 25 Min</li>
+            <li>$55- 30 Min</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Naughty Pics/Clips</h3>
+          <p>Getting yourself a set of offline exclusive photos or videos of me is perfect on its own or a fantastic addition to our sexting or phone call sessions! Enjoy content that will never be posted online and is far more uncensored. Content that would certainly get my Twitter account suspended if I dared to post them! Are you ready to see another side of Melissa?</p>
+                                          <img src="./assets/images/naja5.jpg" width="100%" height="100@%" loading="lazy"
+                    alt="Fried Chicken Unlimited" class="img">
+          <h4>Photo Rates</h4>
+          <ul class="price-list">
+            <li>$10 - 1 Pic</li>
+            <li>$15 - 3 Pics</li>
+            <li>$20 - 5 Pics (Max at a time)</li>
+            <li>Add $10/Pic for fully custom photos tailored to you</li>
+          </ul>
+
+          <h4>Video Rates</h4>
+          <ul class="price-list">
+            <li>$15 - 15 Min</li>
+            <li>$40 - 25 Min</li>
+            <li>$75 - 35 Min</li>
+            <li>$100 - 5 Min (Max at a time)</li>
+            <li>Add $10/Min for fully custom video tailored to you</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="ServiceRates" class="tabcontent">
+      <ul>
+        <li>
+          <h3>A Short Tryst</h3>
+          <ul class="price-list">
+            <li>1 Hour - $90</li>
+            <li>70 Min - $110 (Recommended 1st encounter)</li>
+            <li>2 Hours - $200</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Duos</h3>
+          <ul class="price-list">
+            <li>$220 - 2 Hour</li>
+            <li>$150 - 1 Hours</li>
+            <li>$180 - 160 Mins</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Trios</h3>
+          <ul class="price-list">
+            <li>$80 - 1 Hour</li>
+            <li>$105 - 1.5 Hours</li>
+            <li>$130 - 2 Hours</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Out on a Date</h3>
+          <ul class="price-list">
+            <li>3 Hours - $190 (1Hr Public Cocktail Date + 2Hrs Alone)</li>
+            <li>4 Hours - $230 (1Hr Public Dinner Date + 3Hrs Alone)</li>
+            <li>6  Hours - $600 (1Hr Alone + 3Hrs Public Date(s) + 2Hrs Alone)</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Virtual Rates Tab -->
+    <div id="VirtualRates" class="tabcontent">
+      <ul>
+        <li>
+          <h3>Virtual Date</h3>
+          <ul class="price-list">
+            <li>7 Days  - $150</li>
+            <li>Premium - $100</li>
+            <li></li>
+          </ul>
+        </li>
+        <li>
+          <h3>Online Chat</h3>
+          <ul class="price-list">
+            <li>30 Min - $10</li>
+            <li>1 Hour - $30</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Long Rates Tab -->
+    <div id="LongRates" class="tabcontent">
+      <ul>
+        <li>
+          <h3>A Lengthy Engagement</h3>
+          <ul class="price-list">
+            <li>10 - 12 Hours - 3,200 (Date and Overnight)</li>
+            <li>Up to 15 Hours - $900 (Date, Overnight and Unforgettable Morning After)</li>
+            <li>Up to 24 Hours - $980 (All Day & Night)</li>
+            <li>Up to 48 Hours - $1,500 (Two Days & Nights)</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Additional Companion</h3>
+          <ul class="price-list">
+            <li>+$150/Hour Each additional companion</li>
+            <li>(Or in the case that there are differing rates, it is common etiquette to price match the highest rate)</li>
+          </ul>
+        </li>
+        <li>
+          <h3>OUTCALLS</h3>
+          <ul class="price-list">
+            <li>+$20 - Minimum Outcall fee for transportation/travel time</li>
+            <li>+$10 - For each additional Hour</li>
+            <li>+$40 - Each additional Day</li>
+            <li>+$70/Hour - For couples</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+
+      // Hide all tab contents
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+
+      // Remove active class from all buttons
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+
+      // Show the clicked tab content and mark the button as active
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+
+    // Default open tab on load
+    document.getElementById("defaultOpen").click();
+  </script>
+                    <script>
+    function toggleNav() {
+        var sidenav = document.getElementById("mySidenav");
+        if (sidenav.style.width === "250px") {
+            sidenav.style.width = "0";
+        } else {
+            sidenav.style.width = "250px";
+        }
+    }
+</script>
+</body>
+</html>
