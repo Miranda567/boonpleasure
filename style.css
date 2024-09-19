@@ -206,8 +206,8 @@ body.active { overflow: hidden; }
 .h4 { font-size: var(--fs-3); }
 
 .btn {
-  background-color: #FFFFFF;
-  color: crimson;
+  background-color: crimson;
+  color: #fff;
   font-family: var(--ff-rubik);
   font-size: var(--fs-4);
   font-weight: var(--fw-500);
@@ -882,33 +882,6 @@ body.active { overflow: hidden; }
   #DELIVERY
 \*-----------------------------------*/
 
-.delivery-content { margin-block-end: 40px; }
-
-.delivery .section-title {
-  max-width: 17ch;
-  line-height: 1.6;
-  letter-spacing: -2px;
-}
-
-.delivery .section-text { margin-block: 15px 25px; }
-
-.delivery-banner {
-  position: relative;
-  aspect-ratio: 1 / 0.86;
-}
-
-.delivery-img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translateX(-80px);
-  transition: var(--transition-2);
-}
-
-
-
-
-
 /*-----------------------------------*\
   #TESTIMONIALS
 \*-----------------------------------*/
@@ -1153,14 +1126,15 @@ body.active { overflow: hidden; }
   #FOOTER
 \*-----------------------------------*/
 
-.footer { overflow: hidden; }
+.footer { overflow: hidden; 
+  margin-top: 90px;
+  background-color: #ffff;
+}
 
 .footer-top {
   position: relative;
   padding-block: 120px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: bottom;
+  background-color: #f9f9fa;
   border-block-end: 2px solid var(--independence_30);
 }
 
@@ -1234,40 +1208,41 @@ body.active { overflow: hidden; }
 .footer-list address { max-width: 20ch; }
 
 .footer-form {
-  background-color: var(--white);
-  padding: 30px;
-  border: 1px solid var(--cultured);
+  background-color: #FFFFFF;
+  padding: 20px;
+  border: 2px solid hsl(0, 0%, 91%);
   box-shadow: var(--shadow-2);
 }
 
 .input-wrapper {
   display: grid;
-  gap: 10px;
-  margin-block-end: 10px;
+  gap: 5px;
+  margin-block-end: 5px;
 }
 
 .input-field {
-  background-color: var(--bg-white);
-  box-shadow: var(--shadow-2);
-  padding: 15px 30px;
-  border: 2px solid var(--border-eerie-black);
-  margin-block-end: 25px;
+  background:#FFFFFF;
+  
+  padding: 15px 20px;
+  border: 1px solid hsl(0, 0%, 91%);
+  margin-block-end: 15px;
   outline: none;
   transition: var(--transition-1);
 }
 
 .input-field:focus { box-shadow: none; }
 
-.input-field::placeholder { color: var(--spanish-gray); }
+.input-field::placeholder { color: #ccc; }
 
 .input-field::-webkit-calendar-picker-indicator { opacity: 0.5; }
 
 textarea.input-field {
   min-height: 50px;
-  max-height: 150px;
+  max-height: 100px;
   height: 100px;
   resize: vertical;
   margin-block-end: 10px;
+  border: 1px solid hsl(0, 0%, 91%);
 }
 
 .footer-form .btn {
@@ -1788,12 +1763,13 @@ textarea.input-field {
 
 }
 
-.appoin { padding-block-start: 0; }
+.appoin { padding-block-start: 0;
+margin-top: 90px;}
 
 .appoin-card .card-banner { display: none; }
 
 .appoin-card .card-content {
-  background-color: var(--indian-yellow);
+  background-color: crimson;
   padding: 80px 15px;
   text-align: center;
   color: var(--black);
@@ -1806,10 +1782,10 @@ textarea.input-field {
 .input-field {
   background-color: var(--white);
   color: var(--davys-gray);
-  min-height: 56px;
+  min-height: 26px;
   padding-inline: 25px;
   border-radius: var(--radius-5);
-  margin-block-end: 20px;
+  margin-block-end: 10px;
   outline: none;
   outline-offset: 0;
 }
@@ -1829,7 +1805,6 @@ select.input-field,
 .input-field.date {
   font-family: var(--ff-oswald);
   color: var(--eerie-black-1);
-  font-weight: var(--fw-500);
 }
 
 .input-field > option {
@@ -1859,7 +1834,7 @@ textarea.input-field {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   border: 1px solid var(--white);
   padding: 13px;
   border-radius: var(--radius-5);
