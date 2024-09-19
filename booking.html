@@ -1,0 +1,376 @@
+ 
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking / Session</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <style>
+    /* Modal styling */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 60px;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+    
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 500px;
+      text-align: center;
+    }
+    
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    
+    .close:hover, .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
+  <!--
+                          - google font link
+                        -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Rubik:wght@400;500;600;700&family=Shadows+Into+Light&display=swap"
+  rel="stylesheet">
+
+  <!--
+                          - preload images
+                        -->
+  <link rel="preload" as="image" href="./assets/images/hero-banner.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-banner-bg.png" media="min-width(768px)">
+  <link rel="preload" as="image" href="./assets/images/hero-bg.jpg">
+
+</head>
+
+<body id="top">
+
+  <!--
+                          - #HEADER
+                        -->
+
+  <header class="header" data-header>
+    <div class="container">
+
+      <h1>
+        <a href="index.html" class="logo"><span class="spano">Stacy</span><span class="span">Session</span></a>
+      </h1>
+
+      <nav class="navbar" data-navbar>
+        <ul class="navbar-list">
+
+          <li class="nav-item">
+            <a href="index.html" class="navbar-link" data-nav-link>Home</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="rates.html" class="navbar-link" data-nav-link>Rates</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="booking.html" class="navbar-link" data-nav-link>Book Me</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="protocol.html" class="navbar-link" data-nav-link>Protocol</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="blog.html" class="navbar-link" data-nav-link>Blog</a>
+          </li>
+
+        </ul>
+      </nav>
+
+      <div class="header-btn-group">
+
+        <button class="nav-toggle-btn" aria-label="Toggle Menu" data-menu-toggle-btn>
+          <span class="line top"></span>
+          <span class="line middle"></span>
+          <span class="line bottom"></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+
+
+
+
+  <!--
+                          - #SEARCH BOX
+                        -->
+
+
+
+
+
+
+
+  <main>
+    <article>
+ 
+  <footer class="footer">
+
+  
+      <div class="container">
+
+        <div class="footer-brand">
+
+          <a href="" class="logo">Contact Me<span class="span">.</span></a>
+
+          <p class="footer-text">
+            Please fill out my booking form so that I can plan the perfect date for us!
+          </p>
+
+
+
+        </div>
+
+
+      
+
+        <form id="bookingForm" class="footer-form">
+
+          <p class="footer-list-title">Contact Me</p>
+
+          <div class="input-wrapper">
+ <label for="name">Name:</label>
+    <input type="text" id="name" class="input-field" required>
+   <label for="email">Email :</label>
+            <input type="email" id="email" placeholder="Email where I can reach you?
+"class="input-field" required>
+
+          </div>
+                  
+              <div class="input-wrapper">
+   <label for="date">Date:</label>
+    <input type="date" id="date" class="input-field" required>
+</div>
+          <div class="input-wrapper">
+    <label for="time">Time:</label>
+    <input type="time" id="time" class="input-field" required></div>
+  <div class="input-wrapper">
+      <label for="findMe">How did you find me:</label>
+      <select id="findMe" class="input-field">
+        <option value="instagram">Instagram</option>
+        <option value="Twitter X">X (Twitter)</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Friend Referral">Friend Referral</option>
+        <option value="Recommendation">Recommendation</option>
+        <option value="Others">Others</option>
+      </select>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="locationType">Location:</label>
+      <select id="locationType" class="input-field">
+        <option value="incall">Incall</option>
+        <option value="outcall">Outcall</option>
+        <option value="hotel">Hotel</option>
+        <option value="public">Public</option>
+        <option value="others">Others</option>
+      </select>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="duration">Appointment Length (required)<br>
+        <small>Please indicate your preferred length</small>
+      </label>
+      <select id="duration" class="input-field">
+        <option value="the overnight">The Overnight</option>
+        <option value="the day">The Day</option>
+        <option value="the long dinner">The Long Dinner</option>
+        <option value="the dinner">The Dinner</option>
+        <option value="the introduction">The Introduction</option>
+        <option value="FMTY/custom">FMTY/Custom</option>
+      </select>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="serviceType">Type (required):</label>
+      <select id="serviceType" class="input-field">
+        <option value="" disabled selected>Choose an option</option>
+        <option value="One on One">One on One</option>
+        <option value="Duo with one of my friends">Duo with one of my friends</option>
+        <option value="Virtual (FaceTime)">Virtual (FaceTime)</option>
+      </select>
+    </div>
+
+    <div class="input-wrapper">
+      <label for="length">Length (required):</label>
+      <select id="length" class="input-field">
+        <option value="" disabled selected>Choose an option</option>
+        <option value="15 minutes">15 minutes</option>
+        <option value="30 minutes">30 minutes</option>
+        <option value="1 hour">1 hour</option>
+        <option value="1.5 hours">1.5 hours</option>
+        <option value="2 hours">2 hours</option>
+        <option value="3 hours">3 hours</option>
+        <option value="4 hours">4 hours</option>
+        <option value="5 hours">5 hours</option>
+        <option value="6 hours">6 hours</option>
+      </select>
+    </div>
+
+    <label for="message">Preference:</label>
+    <textarea id="message" placeholder="Message" class="input-field"></textarea><br><br>
+          <button type="submit" class="btn">Submit</button>
+        </form>
+                <div id="bookingResult" class="result"></div>
+      </div>
+    </div>
+      <!-- Modal Structure -->
+  <div id="thankYouModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <p>Thank you for booking me! I will contact you as soon as possible. Kindly check your email in the next 10 minutes. Stacy's session appreciates your booking!</p>
+      <button id="closeBtn">Close</button>
+    </div>
+  </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p class="copyright-text">
+          &copy; 2024 <a href="index.html" class="copyright-link">StacySession</a> All Rights Reserved.
+        </p>
+      </div>
+    </div>
+
+  </footer>
+
+
+
+
+
+  <!-- 
+    - #BACK TO TOP
+  -->
+
+  <a href="#top" class="back-top-btn" aria-label="Back to top" data-back-top-btn>
+    <ion-icon name="chevron-up"></ion-icon>
+  </a>
+
+
+  <script>
+    // Initialize Firebase
+    var firebaseConfig = {
+      apiKey: "AIzaSyAtVvPjdsj84mWqaG4-7SyjbljCnslZ1SM",
+      authDomain: "hendaa-1.firebaseapp.com",
+      databaseURL: "https://hendaa-1-default-rtdb.firebaseio.com",
+      projectId: "hendaa-1",
+      storageBucket: "hendaa-1.appspot.com",
+      messagingSenderId: "831134776479",
+      appId: "1:831134776479:web:56cd7098fc69cd70a376aa"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Firestore database
+    var db = firebase.firestore();
+
+    // Form submission event listener for booking
+    document.getElementById("bookingForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      
+      var name = document.getElementById("name").value;
+      var date = document.getElementById("date").value;
+      var time = document.getElementById("time").value;
+      var findMe = document.getElementById("findMe").value;
+      var locationType = document.getElementById("locationType").value;
+      var duration = document.getElementById("duration").value;
+      var serviceType = document.getElementById("serviceType").value;
+      var length = document.getElementById("length").value;
+      var message = document.getElementById("message").value;
+
+      // Add booking data to Firestore
+      db.collection("bookings").add({
+        name: name,
+        date: date,
+        time: time,
+        findMe: findMe,
+        locationType: locationType,
+        duration: duration,
+        serviceType: serviceType,
+        length: length,
+        message: message,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      })
+      .then(function(docRef) {
+        console.log("Booking successful with ID: ", docRef.id);
+        // Clear form fields after successful booking
+        document.getElementById("bookingForm").reset();
+showModal();
+      })
+      .catch(function(error) {
+        console.error("Error adding booking: ", error);
+      });
+    });
+
+    // Modal functionality
+    var modal = document.getElementById("thankYouModal");
+    var closeBtn = document.getElementById("closeBtn");
+
+    function showModal() {
+      modal.style.display = "block";
+    }
+
+    // Close the modal when clicking on the 'Close' button
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close the modal when clicking the "X"
+    document.querySelector(".close").onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close the modal when clicking outside of the modal
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+  
+
+
+  <!-- 
+    - custom js link
+  -->
+  <script src="./assets/js/script.js" defer></script>
+
+  <!-- 
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
